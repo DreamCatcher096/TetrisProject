@@ -7,9 +7,9 @@
 #include <string.h>
 #include <time.h>
 
-#define	WIDTH	10		// ÓÎÏ·Çø¿í¶È
-#define	HEIGHT	20		// ÓÎÏ·Çø¸ß¶È
-#define	UNIT	20		// Ã¿¸öÓÎÏ·Çøµ¥Î»µÄÊµ¼ÊÏñËØ
+#define	WIDTH	10		// æ¸¸æˆåŒºå®½åº¦
+#define	HEIGHT	20		// æ¸¸æˆåŒºé«˜åº¦
+#define	UNIT	20		// æ¯ä¸ªæ¸¸æˆåŒºå•ä½çš„å®é™…åƒç´ 
 #define PWIDTH  20
 #define NEXT_X -120
 #define NEXT_Y  65
@@ -25,7 +25,7 @@ typedef struct {
 	int orientation;
 	unsigned short *data;
 } tetris_piece_s;
-#define MAXSTAR 200	// ĞÇĞÇ×ÜÊı
+#define MAXSTAR 200	// æ˜Ÿæ˜Ÿæ€»æ•°
 
 struct STAR
 {
@@ -43,7 +43,7 @@ typedef struct Person
 	long   score;
 }Person;
 
-void InitStar(int i);               // ³õÊ¼»¯ĞÇĞÇ
+void InitStar(int i);               // åˆå§‹åŒ–æ˜Ÿæ˜Ÿ
 void MoveStar(Person per[]);
 int Help();
 int Setting();
@@ -235,10 +235,10 @@ void process_fallen_piece(tetris_piece_s *piece, int *playfield)
 		setfillcolor(BLACK);
 		bar(-150, 280, -50, 350);
 
-		name[0] = score;    //¿É²âÊÔiµÄÖµ;iÃ¿´Î±ÈĞÅÏ¢ÉÙÒ»¸ö×Ö·û; 
+		name[0] = score;    //å¯æµ‹è¯•içš„å€¼;iæ¯æ¬¡æ¯”ä¿¡æ¯å°‘ä¸€ä¸ªå­—ç¬¦; 
 		setcolor(RED);
-		settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
-		sprintf((char*)name, "%d", name[0]); //·½±ã²é¿´Ã¿Ò»¸ö
+		settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
+		sprintf((char*)name, "%d", name[0]); //æ–¹ä¾¿æŸ¥çœ‹æ¯ä¸€ä¸ª
 		outtextxy(-110, 290, name);
 	}
 
@@ -298,11 +298,11 @@ int game_main()
 
 	initgraph(640, 480);
 
-	setbkmode(TRANSPARENT);			// ÉèÖÃÍ¼°¸Ìî³äµÄ±³¾°É«ÎªÍ¸Ã÷
-									// ÉèÖÃ×ø±êÔ­µã
+	setbkmode(TRANSPARENT);			// è®¾ç½®å›¾æ¡ˆå¡«å……çš„èƒŒæ™¯è‰²ä¸ºé€æ˜
+									// è®¾ç½®åæ ‡åŸç‚¹
 	setorigin(220, 20);
 
-	// »æÖÆÓÎÏ·Çø±ß½ç
+	// ç»˜åˆ¶æ¸¸æˆåŒºè¾¹ç•Œ
 	rectangle(-1, -1, WIDTH * UNIT + 1, HEIGHT * UNIT + 1);
 	rectangle(-2, -2, WIDTH * UNIT + 2, HEIGHT * UNIT + 2);
 	rectangle(-3, -3, WIDTH * UNIT + 3, HEIGHT * UNIT + 3);
@@ -310,21 +310,21 @@ int game_main()
 	//rectangle(-146, 49, WIDTH * UNIT -229, HEIGHT * UNIT - 229);
 	//rectangle(-147,48, WIDTH * UNIT -228, HEIGHT * UNIT - 228);
 	setcolor(YELLOW);
-	settextstyle(30, 0, _T("Î¢ÈíÑÅºÚ"));
+	settextstyle(30, 0, _T("å¾®è½¯é›…é»‘"));
 	outtextxy(-145, 20, _T("NEXT"));
 	setcolor(YELLOW);
-	settextstyle(30, 0, _T("Î¢ÈíÑÅºÚ"));
+	settextstyle(30, 0, _T("å¾®è½¯é›…é»‘"));
 	outtextxy(-130, 250, _T("SCORE"));
-	settextstyle(30, 0, _T("Î¢ÈíÑÅºÚ"));
-	outtextxy(220, 50, _T("a/¡û : left"));
-	outtextxy(220, 80, _T("d/¡ú : right"));
-	outtextxy(220, 110, _T("w/¡ü : rotate"));
-	outtextxy(220, 140, _T("d/¡ı : speed up"));
+	settextstyle(30, 0, _T("å¾®è½¯é›…é»‘"));
+	outtextxy(220, 50, _T("a/â† : left"));
+	outtextxy(220, 80, _T("d/â†’ : right"));
+	outtextxy(220, 110, _T("w/â†‘ : rotate"));
+	outtextxy(220, 140, _T("d/â†“ : speed up"));
 	outtextxy(220, 170, _T("space : drop"));
 	outtextxy(220, 200, _T("q : quit"));
-	name[0] = 0;    //¿É²âÊÔiµÄÖµ;iÃ¿´Î±ÈĞÅÏ¢ÉÙÒ»¸ö×Ö·û; 
+	name[0] = 0;    //å¯æµ‹è¯•içš„å€¼;iæ¯æ¬¡æ¯”ä¿¡æ¯å°‘ä¸€ä¸ªå­—ç¬¦; 
 	setcolor(RED);
-	settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+	settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 	sprintf((char*)name, "%d", name[0]);
 	outtextxy(-110, 290, name);
 
@@ -339,9 +339,9 @@ int game_main()
 	now = clock() / 100;
 	while (c != 'q')
 	{
-		// »ñÈ¡°´¼ü
+		// è·å–æŒ‰é”®
 
-		// ¸ù¾İÊäÈë£¬¼ÆËãĞÂµÄ×ø±ê
+		// æ ¹æ®è¾“å…¥ï¼Œè®¡ç®—æ–°çš„åæ ‡
 		if (_kbhit()) {
 			c = _getch();
 			if (c == -32) {
@@ -395,42 +395,42 @@ int game_main()
 		Sleep(20);
 	}
 	/*char name[100];
-	name[0]=score;    //¿É²âÊÔiµÄÖµ;iÃ¿´Î±ÈĞÅÏ¢ÉÙÒ»¸ö×Ö·û;
+	name[0]=score;    //å¯æµ‹è¯•içš„å€¼;iæ¯æ¬¡æ¯”ä¿¡æ¯å°‘ä¸€ä¸ªå­—ç¬¦;
 	cleardevice();
 	setcolor(RED);
-	settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
-	sprintf(name,"%d", name[0]); //·½±ã²é¿´Ã¿Ò»¸ö
+	settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
+	sprintf(name,"%d", name[0]); //æ–¹ä¾¿æŸ¥çœ‹æ¯ä¸€ä¸ª
 	outtextxy(150, 200, name);
 	_getch();*/
 	return 0;
 }
 
-// Ö÷º¯Êı
+// ä¸»å‡½æ•°
 void main()
 {
 	Person per[300];
-	srand((unsigned)time(NULL));           // Ëæ»úÖÖ×Ó
-	initgraph(640, 480);	               // ´ò¿ªÍ¼ĞÎ´°¿Ú
+	srand((unsigned)time(NULL));           // éšæœºç§å­
+	initgraph(640, 480);	               // æ‰“å¼€å›¾å½¢çª—å£
 	cleardevice();
 	MoveStar(per);
 }
 
-// ³õÊ¼»¯ĞÇĞÇ
+// åˆå§‹åŒ–æ˜Ÿæ˜Ÿ
 void InitStar(int i)
 {
 	star[i].x = 0;
 	star[i].y = rand() % 480;
 	star[i].step = (rand() % 5000) / 1000.0 + 1;
-	star[i].color = (int)(star[i].step * 255 / 6.0 + 0.5);	// ËÙ¶ÈÔ½¿ì£¬ÑÕÉ«Ô½ÁÁ
+	star[i].color = (int)(star[i].step * 255 / 6.0 + 0.5);	// é€Ÿåº¦è¶Šå¿«ï¼Œé¢œè‰²è¶Šäº®
 	star[i].color = RGB(star[i].color, star[i].color, star[i].color);
 }
-// ÒÆ¶¯ĞÇĞÇ
+// ç§»åŠ¨æ˜Ÿæ˜Ÿ
 void MoveStar(Person per[])
 {
 	int a = -1, num = 220;
 	int paint = 0;
 	int v = -1;
-	// ³õÊ¼»¯ËùÓĞĞÇĞÇ
+	// åˆå§‹åŒ–æ‰€æœ‰æ˜Ÿæ˜Ÿ
 	char signName[100];
 	for (int i = 0; i<MAXSTAR; i++)
 	{
@@ -444,10 +444,10 @@ void MoveStar(Person per[])
 			if (paint == 1 || paint == 0)
 			{
 				setcolor(RED);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(260, 220, _T("S t a r t"));
 				setcolor(YELLOW);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(265, 265, _T("H e l p"));
 				outtextxy(265, 310, _T("R a n k"));
 				outtextxy(240, 355, _T("S e t t i n g"));
@@ -455,60 +455,60 @@ void MoveStar(Person per[])
 			if (paint == 2)
 			{
 				setcolor(YELLOW);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(260, 220, _T("S t a r t"));
 				setcolor(RED);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(265, 265, _T("H e l p"));
 				setcolor(YELLOW);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(265, 310, _T("R a n k"));
 				outtextxy(240, 355, _T("S e t t i n g"));
 			}
 			if (paint == 3)
 			{
 				setcolor(YELLOW);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(260, 220, _T("S t a r t"));
 				outtextxy(265, 265, _T("H e l p"));
 				setcolor(RED);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(265, 310, _T("R a n k"));
 				setcolor(YELLOW);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(240, 355, _T("S e t t i n g"));
 			}
 			if (paint == 4)
 			{
 				setcolor(YELLOW);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(260, 220, _T("S t a r t"));
 				outtextxy(265, 265, _T("H e l p"));
 				outtextxy(265, 310, _T("R a n k"));
 				setcolor(RED);
-				settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+				settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 				outtextxy(240, 355, _T("S e t t i n g"));
 			}
 
-			// ²ÁµôÔ­À´µÄĞÇĞÇ
+			// æ“¦æ‰åŸæ¥çš„æ˜Ÿæ˜Ÿ
 			putpixel((int)star[i].x, star[i].y, 0);
 			putpixel((int)star[i].x + 1, star[i].y, 0);
 			putpixel((int)star[i].x, star[i].y + 1, 0);
 			putpixel((int)star[i].x + 1, star[i].y + 1, 0);
 
-			// ¼ÆËãĞÂÎ»ÖÃ
-			star[i].x += star[i].step + 6;  //¿Éµ÷ÕûËÙ¶È
+			// è®¡ç®—æ–°ä½ç½®
+			star[i].x += star[i].step + 6;  //å¯è°ƒæ•´é€Ÿåº¦
 			if (star[i].x > 640)	InitStar(i);
 
-			// »­ĞÂĞÇĞÇ
+			// ç”»æ–°æ˜Ÿæ˜Ÿ
 			putpixel((int)star[i].x, star[i].y, star[i].color);
 			putpixel((int)star[i].x + 1, star[i].y, star[i].color);
 			putpixel((int)star[i].x, star[i].y + 1, star[i].color);
 			putpixel((int)star[i].x + 1, star[i].y + 1, star[i].color);
 
-			//±êÌâ
+			//æ ‡é¢˜
 			setcolor(YELLOW);
-			settextstyle(64, 0, _T("Î¢ÈíÑÅºÚ"));
+			settextstyle(64, 0, _T("å¾®è½¯é›…é»‘"));
 			outtextxy(220, 110, _T("T e t r i s"));
 
 			if (_kbhit())
@@ -560,10 +560,10 @@ void MoveStar(Person per[])
 						num = num + 45;
 					}
 					setcolor(RED);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(260, 220, _T("S t a r t"));
 					setcolor(YELLOW);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(265, 265, _T("H e l p"));
 					outtextxy(265, 310, _T("R a n k"));
 					outtextxy(240, 355, _T("S e t t i n g"));
@@ -572,13 +572,13 @@ void MoveStar(Person per[])
 				if (num == 265)
 				{
 					setcolor(YELLOW);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(260, 220, _T("S t a r t"));
 					setcolor(RED);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(265, 265, _T("H e l p"));
 					setcolor(YELLOW);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(265, 310, _T("R a n k"));
 					outtextxy(240, 355, _T("S e t t i n g"));
 					paint = 2;
@@ -586,14 +586,14 @@ void MoveStar(Person per[])
 				if (num == 310)
 				{
 					setcolor(YELLOW);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(260, 220, _T("S t a r t"));
 					outtextxy(265, 265, _T("H e l p"));
 					setcolor(RED);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(265, 310, _T("R a n k"));
 					setcolor(YELLOW);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(240, 355, _T("S e t t i n g"));
 					paint = 3;
 				}
@@ -604,12 +604,12 @@ void MoveStar(Person per[])
 						num = num - 45;
 					}
 					setcolor(YELLOW);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(260, 220, _T("S t a r t"));
 					outtextxy(265, 265, _T("H e l p"));
 					outtextxy(265, 310, _T("R a n k"));
 					setcolor(RED);
-					settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+					settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 					outtextxy(240, 355, _T("S e t t i n g"));
 					paint = 4;
 				}
@@ -619,26 +619,26 @@ void MoveStar(Person per[])
 	}
 }
 
-//°ïÖú½çÃæ
+//å¸®åŠ©ç•Œé¢
 int Help()
 {
 
 	cleardevice();
 	setcolor(LIGHTGRAY);
-	settextstyle(25, 0, _T("ºÚÌå"));
-	outtextxy(185, 80, _T("×ÖÄ¸"));
-	outtextxy(320, 80, _T("¹¦ÄÜ"));
+	settextstyle(25, 0, _T("é»‘ä½“"));
+	outtextxy(185, 80, _T("å­—æ¯"));
+	outtextxy(320, 80, _T("åŠŸèƒ½"));
 	outtextxy(200, 140, _T("w"));
-	outtextxy(290, 140, _T("±äĞÎ/ÉÏÒÆ"));
+	outtextxy(290, 140, _T("å˜å½¢/ä¸Šç§»"));
 	outtextxy(200, 180, _T("s"));
-	outtextxy(320, 180, _T("ÏÂÒÆ"));
+	outtextxy(320, 180, _T("ä¸‹ç§»"));
 	outtextxy(200, 220, _T("a"));
-	outtextxy(320, 220, _T("×óÒÆ"));
+	outtextxy(320, 220, _T("å·¦ç§»"));
 	outtextxy(200, 260, _T("d"));
-	outtextxy(320, 260, _T("ÓÒÒÆ"));
+	outtextxy(320, 260, _T("å³ç§»"));
 	outtextxy(200, 300, _T("j"));
-	outtextxy(320, 300, _T("È·¶¨"));
-	outtextxy(400, 360, _T("°´ÈÎÒâ¼ü·µ»Ø.."));
+	outtextxy(320, 300, _T("ç¡®å®š"));
+	outtextxy(400, 360, _T("æŒ‰ä»»æ„é”®è¿”å›.."));
 	if (_kbhit())
 	{
 		return 1;
@@ -646,7 +646,7 @@ int Help()
 	_getch();
 }
 
-//ÉèÖÃ½çÃæ
+//è®¾ç½®ç•Œé¢
 int Setting()
 {
 	int speed;
@@ -654,26 +654,26 @@ int Setting()
 	int x = 270, y = 165, z = 280, q = 175;
 	cleardevice();
 	setcolor(YELLOW);
-	settextstyle(40, 0, _T("Î¢ÈíÑÅºÚ"));
+	settextstyle(40, 0, _T("å¾®è½¯é›…é»‘"));
 	outtextxy(130, 100, _T("speed:"));
-	outtextxy(300, 150, _T("³õ¼¶"));
-	outtextxy(300, 200, _T("ÖĞ¼¶"));
-	outtextxy(300, 250, _T("¸ß¼¶"));
+	outtextxy(300, 150, _T("åˆçº§"));
+	outtextxy(300, 200, _T("ä¸­çº§"));
+	outtextxy(300, 250, _T("é«˜çº§"));
 	setfillcolor(RGB(0xFF, 0x0, 0x80));
 
-	//»­Ò»ÊµĞÄ¾ØĞÎ£¬
+	//ç”»ä¸€å®å¿ƒçŸ©å½¢ï¼Œ
 	bar(x, y, z, q);
 	while (c != 27)
 	{
-		// »ñÈ¡°´¼ü
+		// è·å–æŒ‰é”®
 		c = _getch();
 
-		// ÏÈ²ÁµôÉÏ´ÎÏÔÊ¾µÄ¾ÉÍ¼ĞÎ
+		// å…ˆæ“¦æ‰ä¸Šæ¬¡æ˜¾ç¤ºçš„æ—§å›¾å½¢
 
 		setfillcolor(BLACK);
 		bar(x, y, z, q);
 
-		// ¸ù¾İÊäÈë£¬¼ÆËãĞÂµÄ×ø±ê
+		// æ ¹æ®è¾“å…¥ï¼Œè®¡ç®—æ–°çš„åæ ‡
 
 		switch (c)
 		{
@@ -682,17 +682,17 @@ int Setting()
 		case 'j': if (y>150 && y<200)
 		{
 			delay = 10;
-			return 1;         //·µ»Ø³õ¼¶ËÙ¶È£¬¿É¸Ä2¼´¿É£»
+			return 1;         //è¿”å›åˆçº§é€Ÿåº¦ï¼Œå¯æ”¹2å³å¯ï¼›
 		}
 				  if (y>200 && y<250)
 				  {
 					  delay = 4;
-					  return 1;        //·µ»ØÖĞ¼¶ËÙ¶È£¬¿É¸Ä3¼´¿É£»
+					  return 1;        //è¿”å›ä¸­çº§é€Ÿåº¦ï¼Œå¯æ”¹3å³å¯ï¼›
 				  }
 				  if (y>250)
 				  {
 					  delay = 1;
-					  return 1;       //·µ»Ø¸ß¼¶ËÙ¶È£¬¿É¸Ä4¼´¿É£»
+					  return 1;       //è¿”å›é«˜çº§é€Ÿåº¦ï¼Œå¯æ”¹4å³å¯ï¼›
 				  }
 		}
 		if (y<150)
@@ -705,15 +705,15 @@ int Setting()
 			y = y - 50;
 			q = q - 50;
 		}
-		// »æÖÆĞÂµÄÍ¼ĞÎ
+		// ç»˜åˆ¶æ–°çš„å›¾å½¢
 		setfillcolor(RGB(0xFF, 0x0, 0x80));
-		//»­Ò»ÊµĞÄ¾ØĞÎ£¬
+		//ç”»ä¸€å®å¿ƒçŸ©å½¢ï¼Œ
 		bar(x, y, z, q);
 	}
 	_getch();
 }
 
-//ÅÅĞĞ°ñº¯Êı
+//æ’è¡Œæ¦œå‡½æ•°
 int Rank(Person per[], char signName[], int v)
 {
 	char s[100];
@@ -722,7 +722,7 @@ int Rank(Person per[], char signName[], int v)
 
 	cleardevice();
 	setcolor(YELLOW);
-	settextstyle(35, 0, _T("Î¢ÈíÑÅºÚ"));
+	settextstyle(35, 0, _T("å¾®è½¯é›…é»‘"));
 	outtextxy(90, 45, _T("ID"));
 	outtextxy(210, 45, _T("SCORE"));
 	outtextxy(420, 45, _T("Name"));
@@ -738,7 +738,7 @@ int Rank(Person per[], char signName[], int v)
 	_getch();
 }
 
-//½áÊø½çÃæ
+//ç»“æŸç•Œé¢
 int GameOver(Person per[], char signName[], int v)
 {
 	TCHAR s[100] = { 0 };
@@ -747,18 +747,18 @@ int GameOver(Person per[], char signName[], int v)
 	TCHAR name[100] = { 0 };
 	//char numer[100];
 	int r;
-	per[0].score = score;          /*Ö»Ğè´«Èë·ÖÊı*/
+	per[0].score = score;          /*åªéœ€ä¼ å…¥åˆ†æ•°*/
 
 								   //cleardevice();
 	closegraph();
 	initgraph(640, 480);
 	setcolor(YELLOW);
-	settextstyle(35, 0, _T("Î¢ÈíÑÅºÚ"));
-	outtextxy(250, 80, _T("ÓÎÏ·½áÊø"));
-	outtextxy(180, 150, _T("·Ö Êı :"));
-	outtextxy(50, 220, _T("ÇëÊäÈëÄãµÄÃû×Ö:"));
-	sprintf((char*)s, "%d", per[0].score); //·½±ã²é¿´Ã¿Ò»¸ö
-	outtextxy(280, 150, s); //¿ÉÊä³öÈ«²¿ÄÚÈİ	
+	settextstyle(35, 0, _T("å¾®è½¯é›…é»‘"));
+	outtextxy(250, 80, _T("æ¸¸æˆç»“æŸ"));
+	outtextxy(180, 150, _T("åˆ† æ•° :"));
+	outtextxy(50, 220, _T("è¯·è¾“å…¥ä½ çš„åå­—:"));
+	sprintf((char*)s, "%d", per[0].score); //æ–¹ä¾¿æŸ¥çœ‹æ¯ä¸€ä¸ª
+	outtextxy(280, 150, s); //å¯è¾“å‡ºå…¨éƒ¨å†…å®¹	
 	setlinecolor(WHITE);
 	line(244, 260, 254, 260);
 	line(244, 261, 254, 261);
@@ -780,12 +780,12 @@ int GameOver(Person per[], char signName[], int v)
 	while (num != 0)
 	{
 		setcolor(YELLOW);
-		settextstyle(35, 0, _T("Î¢ÈíÑÅºÚ"));
-		outtextxy(250, 80, _T("ÓÎÏ·½áÊø"));
-		outtextxy(180, 150, _T("·Ö Êı :"));
-		sprintf((char*)s, "%d", per[0].score); //·½±ã²é¿´Ã¿Ò»¸ö
-		outtextxy(280, 150, s); //¿ÉÊä³öÈ«²¿ÄÚÈİ	
-		outtextxy(50, 220, _T("ÇëÊäÈëÄãµÄÃû×Ö:"));
+		settextstyle(35, 0, _T("å¾®è½¯é›…é»‘"));
+		outtextxy(250, 80, _T("æ¸¸æˆç»“æŸ"));
+		outtextxy(180, 150, _T("åˆ† æ•° :"));
+		sprintf((char*)s, "%d", per[0].score); //æ–¹ä¾¿æŸ¥çœ‹æ¯ä¸€ä¸ª
+		outtextxy(280, 150, s); //å¯è¾“å‡ºå…¨éƒ¨å†…å®¹	
+		outtextxy(50, 220, _T("è¯·è¾“å…¥ä½ çš„åå­—:"));
 		if (_kbhit())
 		{
 			c = _getch();
@@ -815,16 +815,16 @@ int GameOver(Person per[], char signName[], int v)
 	}
 	cleardevice();
 
-	//numer[0]=i;    //¿É²âÊÔiµÄÖµ;iÃ¿´Î±ÈĞÅÏ¢ÉÙÒ»¸ö×Ö·û;
-	//sprintf(name,"%d", name[0]); //·½±ã²é¿´Ã¿Ò»¸ö
-	//outtextxy(150, 200, name); //¿ÉÊä³öÈ«²¿ÄÚÈİ	
+	//numer[0]=i;    //å¯æµ‹è¯•içš„å€¼;iæ¯æ¬¡æ¯”ä¿¡æ¯å°‘ä¸€ä¸ªå­—ç¬¦;
+	//sprintf(name,"%d", name[0]); //æ–¹ä¾¿æŸ¥çœ‹æ¯ä¸€ä¸ª
+	//outtextxy(150, 200, name); //å¯è¾“å‡ºå…¨éƒ¨å†…å®¹	
 	for (r = 0; r<i - 1; r++)
 	{
 		per[0].name[r] = name[r];
 	}
 	per[0].name[r + 1] = 0;
-	//sprintf(s,"%c", per[0].name[2]); //·½±ã²é¿´Ã¿Ò»¸ö
-	//outtextxy(150, 200, s); //¿ÉÊä³öÈ«²¿ÄÚÈİ
+	//sprintf(s,"%c", per[0].name[2]); //æ–¹ä¾¿æŸ¥çœ‹æ¯ä¸€ä¸ª
+	//outtextxy(150, 200, s); //å¯è¾“å‡ºå…¨éƒ¨å†…å®¹
 	WriteToFile(per, r);
 	for (v = 0; v<i - 1; v++)
 	{
@@ -838,7 +838,7 @@ int GameOver(Person per[], char signName[], int v)
 	return 1;
 }
 
-//°ÑÍæ¼ÒĞÅÏ¢Ğ´ÈëÎÄ¼ş;
+//æŠŠç©å®¶ä¿¡æ¯å†™å…¥æ–‡ä»¶;
 void WriteToFile(Person per[], int r)
 {
 	FILE *fp;
@@ -859,7 +859,7 @@ void WriteToFile(Person per[], int r)
 	fclose(fp);
 }
 
-//´ÓÎÄ¼şÖĞ¶Á³öĞÅÏ¢
+//ä»æ–‡ä»¶ä¸­è¯»å‡ºä¿¡æ¯
 int ReadFromFile(Person per[])
 {
 	FILE *fp;
@@ -879,7 +879,7 @@ int ReadFromFile(Person per[])
 	return n;
 }
 
-//¶Ô¶Á³öµÄÊı¾İ½øĞĞÅÅĞò
+//å¯¹è¯»å‡ºçš„æ•°æ®è¿›è¡Œæ’åº
 void RankScore(Person per[], char signName[], int v)
 {
 	struct Person temp;
@@ -890,7 +890,7 @@ void RankScore(Person per[], char signName[], int v)
 	int a;
 	n = ReadFromFile(per);
 	/*s[1]=n;
-	sprintf(s,"%d", s[1]);   //²âÊÔÊÇ·ñ°ÑÊı¾İ´ÓÎÄ¼şÖĞ¶ÁÈë
+	sprintf(s,"%d", s[1]);   //æµ‹è¯•æ˜¯å¦æŠŠæ•°æ®ä»æ–‡ä»¶ä¸­è¯»å…¥
 	outtextxy(100, 100,s);
 	*/
 	for (i = 0; i<n - 1; i++)
@@ -932,7 +932,7 @@ void RankScore(Person per[], char signName[], int v)
 		ls[1] = l;
 		sprintf((char*)s, "%d", per[l].score);
 		sprintf((char*)ls, "%d", ls[1] + 1);
-		settextstyle(30, 0, _T("Î¢ÈíÑÅºÚ"));
+		settextstyle(30, 0, _T("å¾®è½¯é›…é»‘"));
 		outtextxy(95, 83 + z, ls);
 		outtextxy(200, 83 + z, s);
 		outtextxy(390, 83 + z, per[l].name);
